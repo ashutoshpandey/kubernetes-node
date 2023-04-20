@@ -1,9 +1,3 @@
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: staging
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -23,7 +17,7 @@ spec:
     spec:
       containers:
       - name: express
-        image: xxxxx.dkr.ecr.us-east-2.amazonaws.com/ashutoshkubertest:v1.0.0
+        image: 312854552697.dkr.ecr.us-east-2.amazonaws.com/ashutoshkubertest:v1.0.1
         ports:
         - name: http
           containerPort: 8080
@@ -36,16 +30,3 @@ spec:
             cpu: 300m
       imagePullSecrets:
         - name: regcred
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: express
-  namespace: staging
-spec:
-  selector:
-    app: express
-  ports:
-    - port: 8080
-      targetPort: 8080
-  type: LoadBalancer
